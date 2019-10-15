@@ -38,16 +38,16 @@ new Vue({
             if(urlString !== ''){
                 var devidedString = urlString.split(',');
                 this.rows = [];
-                for(string in devidedString){
-                    devidedString[string] = devidedString[string].replace(/_/g, ' ');
-                    devidedString[string] = devidedString[string].replace(/%C3%A5/g, 'å');
-                    devidedString[string] = devidedString[string].replace(/%C3%85/g, 'Å');
-                    devidedString[string] = devidedString[string].replace(/%C3%A4/g, 'ä');
-                    devidedString[string] = devidedString[string].replace(/%C3%84/g, 'Ä');
-                    devidedString[string] = devidedString[string].replace(/%C3%B6/g, 'ö');
-                    devidedString[string] = devidedString[string].replace(/%C3%96/g, 'Ö');
+                for(i in devidedString){
+                    devidedString[i] = devidedString[i].replace(/_/g, ' ');
+                    devidedString[i] = devidedString[i].replace(/%C3%A5/g, 'å');
+                    devidedString[i] = devidedString[i].replace(/%C3%85/g, 'Å');
+                    devidedString[i] = devidedString[i].replace(/%C3%A4/g, 'ä');
+                    devidedString[i] = devidedString[i].replace(/%C3%84/g, 'Ä');
+                    devidedString[i] = devidedString[i].replace(/%C3%B6/g, 'ö');
+                    devidedString[i] = devidedString[i].replace(/%C3%96/g, 'Ö');
                     
-                    this.rows.push(devidedString[string]);
+                    this.rows.push(devidedString[i]);
                     this.rowHead = 'Personen skrev';
                     
                 }
@@ -56,11 +56,7 @@ new Vue({
         addToGet(){
             this.href = 'index.html?' + this.rows;
             this.href = this.href.replace(/ /g, '_');
-            window.location.href = '' + this.href;
+            window.location.href = this.href;
         }
-    },
-
-    computed: {
-
     }
-})
+});
