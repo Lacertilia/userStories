@@ -33,7 +33,7 @@ new Vue({
                 this.rowsAdded += 1;
             }
         },
-        loadFromGet(){
+        loadFromUrl(){
             var urlString = window.location.search.substr(1);
             if(urlString !== ''){
                 var devidedString = urlString.split(',');
@@ -53,7 +53,7 @@ new Vue({
                 }
             }
         },
-        addToGet(){
+        addToUrl(){
             this.href = 'index.html?' + this.rows;
             this.href = this.href.replace(/ /g, '_');
             window.location.href = this.href;
