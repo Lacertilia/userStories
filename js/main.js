@@ -48,14 +48,16 @@ new Vue({
                     devidedString[i] = devidedString[i].replace(/%C3%96/g, 'Ö');
                     
                     this.rows.push(devidedString[i]);
-                    this.rowHead = 'Personen skrev';
+                    
                     
                 }
+                this.rowHead = 'Personen skrev';
             }
         },
         addToUrl(){
             this.href = 'index.html?' + this.rows;
             this.href = this.href.replace(/ /g, '_');
+            alert('Kopiera länken som du kommer till efter denna alert.');
             window.location.href = this.href;
         }
     }
