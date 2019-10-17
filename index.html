@@ -23,7 +23,7 @@
 
         <h2 v-text='rowHead'></h2>
         <ul>
-            <li v-for='row in rows' v-text='row'></li>
+            <li v-for='row in rows' v-text='printRow(row)'></li>
         </ul>
         <button @click='addToUrl'>Skapa länk för lärare</button>
         <h2>För lärare</h2>

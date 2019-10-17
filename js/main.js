@@ -9,9 +9,9 @@ new Vue({
         cause: '',
         rowsAdded: 0,
         rows: [
-            'Som en elev vill jag lära mig i skolan för att få kunskap.',
-            'Som en framtida universitetsstudent vill jag få bra betyg i skolan för att ta mig in på min önskade universitetslinje.',
-            'Som en programmerare vill jag lära mig programmera i c för att det är bra att kunna flera programmeringsspråk.'
+            'elev.lära_mig.skolan.få_kunskap',
+            'framtida_universitetsstudent.få_bra_betyg.skolan.ta_mig_in_på_min_önskade_universitetslinje',
+            'programmerare.lära_mig_programmera.c.det_är_bra_att_kunna_flera_programmeringsspråk'
         ],
         href: ''
     },
@@ -25,13 +25,29 @@ new Vue({
                     this.rowHead = 'Skrivna rader';
                     this.rows = [];
                 }
-                this.rows.push('Som en ' + this.role + ' vill jag ' + this.activity + ' i ' + this.context + ' för att ' + this.cause + '.');
+                this.role = this.role.replace(/ /g, '_');
+                this.activity = this.activity.replace(/ /g, '_');
+                this.context = this.activity.replace(/ /g, '_');
+                this.cause = this.cause.replace(/ /g, '_');
+                this.rows.push(this.role + '.' + this.activity + '.' + this.context + '.' + this.cause);
                 this.role = '';
                 this.activity = '';
                 this.context = '';
                 this.cause = '';
                 this.rowsAdded += 1;
             }
+        },
+        printRow(row){
+            var devidedRow = row.split('.');
+            var rowRole = devidedRow[0];
+            rowRole = rowRole.replace(/_/g, ' ');
+            var rowActivity = devidedRow[1];
+            rowActivity = rowActivity.replace(/_/g, ' ');
+            var rowContext = devidedRow[2];
+            rowContext = rowContext.replace(/_/g, ' ');
+            var rowCause = devidedRow[3];
+            rowCause = rowCause.replace(/_/g, ' ');
+            return 'Som en ' + rowRole + ' vill jag ' + rowActivity + ' i ' + rowContext + ' för att ' + rowCause + '.';
         },
         loadFromUrl(){
             var urlString = window.location.search.substr(1);
